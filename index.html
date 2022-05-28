@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="./style.css"/>
+  <title>Desafio Js</title>
+</head>
+<body>
+   <header>
+    <nav class="navHeader">
+      <div>
+        <img src="./img/logo.png" class="imgLogo"/>
+      </div>
+      <div id="nav">
+        <button  aria-label="Abrir menu" id="btn-mobile" aria-haspop="true" aria-controls="menu" aria-expanded="false">
+            <span id="hamburguer"></span>
+        </button>
+        <ul id="menu" role="menu"> 
+            <li><span> ola</span></li>
+        </ul>
+      </div>
+    </nav>
+   </header>
+   <main class="mainContent">
+     <section class="citySection">
+       <h1 class="name"></h1>
+       <h2 class="hour " id="data-hora"></h2>
+       <div class="container-img">
+         <img src="./img/unknown.png"/>
+       </div>
+       <div class="container-temp">
+        <div class="temp"></div>
+        <span class="unit"></span>
+       </div>
+     </section>
+     <section class="descripctionSection">
+       <div>
+          <p class="desc">Ensolarado</p>
+          <p class="min"></p>
+          <p class="max"></p>
+       </div>
+       <button class="information">Salvar informações atuais</button>
+     </section>
+   </main>
+   <!-- <footer>
+    <p>&#169;copyright - 2022.</p>
+    <p>All right reserved.</p>
+   </footer> -->
+  <script src="./main.js"></script>
+</body>
+</html>
