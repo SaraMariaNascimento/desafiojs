@@ -83,9 +83,19 @@ const getUserGeo = () => {
 
 )()//auto executando
 
-function salvar(){
-  localStorage.info = []
+
+
+function info(){
+
+let saveInfo =[]
+
+saveInfo.push(city, temp, desc, tempMin, tempMax)
+
+localStorage.setItem('weather', JSON.stringify(saveInfo))
+
+// localStorage.getItem()
 }
+
 
 
 
