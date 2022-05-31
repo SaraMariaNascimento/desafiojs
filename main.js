@@ -29,8 +29,6 @@ const dataHora = zeroFill(now.getUTCDate()) + '/' + zeroFill((now.getMonth() + 1
 document.getElementById('data-hora').innerHTML = dataHora;
 }, 1000);
 
-
-
 const city = document.querySelector('.name')
 const imgContainer = document.querySelector('.container-img');
 const desc = document.querySelector('.desc');
@@ -44,10 +42,10 @@ const getUserGeo = () => {
     navigator.geolocation.watchPosition(resolve, reject)
   })
 }
-//await sempre consulta um metodo de um serviço externo (promise) 
+
 (async function getData() {
   let dataGet = []
-  // Pegando latitude, longitude e passando para o array dataGet
+ 
   await getUserGeo()
     .then(position => {
       dataGet.push(position.coords.latitude)
@@ -58,7 +56,7 @@ const getUserGeo = () => {
       dataGet.push(-23.5489)
       dataGet.push(-42.9687)
     })
-  // Passando as posições para as constantes
+  
   const lat = dataGet[0]
   const long = dataGet[1]
   const key = 'f3b143b438f4b745d5b9b967564e93bf'
@@ -80,48 +78,51 @@ const getUserGeo = () => {
   console.log(result)
 })()
 
-
-btn.addEventListener("click", () => {
-
+function saveStorage(){
   const dados = {
     city: city.innerHTML,
     temp: temp.innerHTML,
     desc: desc.innerHTML,
     tempMin: tempMin.innerHTML,
     tempMax: tempMax.innerHTML,
-    // icon: imgContainer.innerHTML,
-    // hour: interval.innerHTML 
+    icon: imgContainer.innerHTML,
   }
   if(localStorage.length === 0) {
     let saveInfo =[]
     saveInfo.push(dados) 
     localStorage.setItem("weather", JSON.stringify(saveInfo))
   }else{
-    let menu = document.getElementById("menu")
-    menu.innerHTML = ''
     let information = JSON.parse(localStorage.getItem("weather"))
     information.push(dados) 
     localStorage.setItem("weather", JSON.stringify(information))
-
-    let values = JSON.parse(localStorage.getItem('weather'))
-    
-    values.map((item) => {
-
-      let ul = document.createElement("ul")
-      let li = document.createElement("li")
-      let span = document.createElement("span")
-
-      span.textContent = `${item.city} ${item.desc} ${item.tempMax} ${item.tempMin}`;
-
-      li.appendChild(span)
-      ul.appendChild(li)
-      menu.appendChild(ul)
-    })
+    console.log(information)
   }
+}
+function updateWeather(){
+  let menu = document.getElementById("menu")
+  menu.innerHTML = ''
+  let values = JSON.parse(localStorage.getItem('weather'))
+
+  values.map((item) => {
+  let ul = document.createElement("ul")
+  let li = document.createElement("li")
+  let span = document.createElement("span")
+
+  span.textContent = `${item.city} ${item.desc} ${item.tempMax} ${item.tempMin}`;
+
+  li.appendChild(span)
+  ul.appendChild(li)
+  menu.appendChild(ul)
+
+  })
+}
+btn.addEventListener("click", () => {
+  saveStorage()
+  updateWeather()
 })
 
-function weatherSave(){
-  document.getElementById("menu").innerHTML = localStorage.weather;
-}
-document.onchange = weatherSave
- 
+window.onload = function() {
+  updateWeather()
+};
+
+
