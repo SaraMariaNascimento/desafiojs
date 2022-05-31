@@ -18,27 +18,26 @@ btnMobile.addEventListener('click', toggleMenu)
 btnMobile.addEventListener('touchstart', toggleMenu)
 
 
-// Função para formatar 1 em 01
+
+
 const zeroFill = n => {
 	return ('0' + n).slice(-2);
 }
-
-// Cria intervalo
 const interval = setInterval(() => {
-// Pega o horário atual
 const now = new Date();
-// Formata a data conforme dd/mm/aaaa hh:ii:ss
 const dataHora = zeroFill(now.getUTCDate()) + '/' + zeroFill((now.getMonth() + 1)) + '/' + now.getFullYear() + ' ' + zeroFill(now.getHours()) + ':' + zeroFill(now.getMinutes()) + ':' + zeroFill(now.getSeconds());
-// Exibe na tela usando a div#data-hora
 document.getElementById('data-hora').innerHTML = dataHora;
 }, 1000);
 
+
+
 const city = document.querySelector('.name')
-const imgContainer = document.querySelector('container-img');
+const imgContainer = document.querySelector('.container-img');
 const desc = document.querySelector('.desc');
 const temp = document.querySelector('.temp');
 const tempMin = document.querySelector('.min')
 const tempMax = document.querySelector('.max')
+const btn = document.querySelector('.information');
 
 const getUserGeo = () => {
   return new Promise(function (resolve, reject) {
@@ -55,9 +54,10 @@ const getUserGeo = () => {
       dataGet.push(position.coords.longitude)
     })
     .catch(error => {
-      alert(error.message)
+      alert("O navegador não suporta geolocalização 😢 ")
+      dataGet.push(-23.5489)
+      dataGet.push(-42.9687)
     })
-
   // Passando as posições para as constantes
   const lat = dataGet[0]
   const long = dataGet[1]
@@ -72,31 +72,52 @@ const getUserGeo = () => {
   temp.innerHTML = result.main.temp + "°C"
   desc.innerHTML = result.weather[0].description.toUpperCase()
   let iconName = result.weather[0].icon;
-  console.log(iconName)
-  // imgContainer.innerHTML = `<img src="./img/${iconName}.png">`;
+  imgContainer.innerHTML = `<img src="./icons/${iconName}.png">`;
   tempMin.innerHTML = result.main.temp_min + "°C"
   tempMax.innerHTML = result.main.temp_max + "°C"
 
 
   console.log(result)
-}
-
-)()//auto executando
+})()
 
 
+btn.addEventListener("click", () => {
 
-function info(){
+  const dados = {
+    city: city.innerHTML,
+    temp: temp.innerHTML,
+    desc: desc.innerHTML,
+    tempMin: tempMin.innerHTML,
+    tempMax: tempMax.innerHTML,
+    // icon: imgContainer.innerHTML,
+    // hour: interval.innerHTML 
+  }
+  if(localStorage.length === 0) {
+    let saveInfo =[]
+    saveInfo.push(dados) 
+    localStorage.setItem("weather", JSON.stringify(saveInfo))
+  }else{
+    let menu = document.getElementById("menu")
+    menu.innerHTML = ''
+    let information = JSON.parse(localStorage.getItem("weather"))
+    information.push(dados) 
+    localStorage.setItem("weather", JSON.stringify(information))
 
-let saveInfo =[]
+    let values = JSON.parse(localStorage.getItem('weather'))
+    
+    values.map((item) => {
 
-saveInfo.push(city, temp, desc, tempMin, tempMax)
+      let ul = document.createElement("ul")
+      let li = document.createElement("li")
+      let span = document.createElement("span")
 
-localStorage.setItem('weather', JSON.stringify(saveInfo))
+      span.textContent = `${item.city} ${item.desc} ${item.tempMax} ${item.tempMin} ${item.icon} ${item.hour}`;
 
-// localStorage.getItem()
-}
-
-
-
+      li.appendChild(span)
+      ul.appendChild(li)
+      menu.appendChild(ul)
+    })
+  }
+})
 
  

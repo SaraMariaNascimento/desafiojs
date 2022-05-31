@@ -78,22 +78,8 @@
 
 .mainContent{
   background: linear-gradient(#1F618D, #a5a5f7e1);
+  height: 90vh;
   color: #fff;
-}
-
-.searchCity{
-  display: flex;
-  padding: 4rem;
-  justify-content: center;
- 
-}
-
-.searchItem{
-  width: 210px;
-  height: 25px;
-  border: none;
-  border-radius: 3px 0px 0px 3px;
-  padding-left: 5px;
 }
 
 .btn{
@@ -107,17 +93,15 @@
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  margin: 4rem;
+  padding: 8rem;
 }
 
-.citySection > h2, h3, h4{
+.citySection > h1, h2{
   margin: 15px;
 }
-
-.imgIcon{
-  width: 180px;
-  margin-top: 20px;
-  border-radius: 10px;
+.desc, .min, .max{
+  text-align: center;
+  margin: 0.5rem;
 }
 
 .descripctionSection{
@@ -125,10 +109,6 @@
   justify-content: center;
   align-items: center;
   flex-direction: column;
-}
-
-.weather{
-  margin-bottom: 15px;
 }
 
 .information{
@@ -150,6 +130,8 @@
 }
 
 footer{
+  background-color: #a5a5f7e1;
+  color: #fff;
   display: flex;
   justify-content: space-between;
   padding: 5px;
