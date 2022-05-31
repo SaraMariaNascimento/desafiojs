@@ -111,7 +111,7 @@ btn.addEventListener("click", () => {
       let li = document.createElement("li")
       let span = document.createElement("span")
 
-      span.textContent = `${item.city} ${item.desc} ${item.tempMax} ${item.tempMin} ${item.icon} ${item.hour}`;
+      span.textContent = `${item.city} ${item.desc} ${item.tempMax} ${item.tempMin}`;
 
       li.appendChild(span)
       ul.appendChild(li)
@@ -120,4 +120,8 @@ btn.addEventListener("click", () => {
   }
 })
 
+function weatherSave(){
+  document.getElementById("menu").innerHTML = localStorage.weather;
+}
+document.onchange = weatherSave
  
