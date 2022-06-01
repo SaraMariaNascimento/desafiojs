@@ -87,7 +87,12 @@
   border: none;
   border-radius: 2px;
 }
-
+#menu{
+  text-align: center;
+}
+#menu ul li{
+  padding: 15px;
+}
 .citySection{
   display: flex;
   justify-content: center;

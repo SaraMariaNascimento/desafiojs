@@ -17,9 +17,6 @@ btnMobile.addEventListener('click', toggleMenu)
 
 btnMobile.addEventListener('touchstart', toggleMenu)
 
-
-
-
 const zeroFill = n => {
 	return ('0' + n).slice(-2);
 }
@@ -56,6 +53,8 @@ const getUserGeo = () => {
       dataGet.push(-23.5489)
       dataGet.push(-42.9687)
     })
+
+
   
   const lat = dataGet[0]
   const long = dataGet[1]
@@ -73,8 +72,10 @@ const getUserGeo = () => {
   imgContainer.innerHTML = `<img src="./icons/${iconName}.png">`;
   tempMin.innerHTML = result.main.temp_min + "°C"
   tempMax.innerHTML = result.main.temp_max + "°C"
+  
 
-
+  
+  
   console.log(result)
 })()
 
@@ -87,6 +88,8 @@ function saveStorage(){
     tempMax: tempMax.innerHTML,
     icon: imgContainer.innerHTML,
   }
+  console.log( dados)
+  
   if(localStorage.length === 0) {
     let saveInfo =[]
     saveInfo.push(dados) 
@@ -101,21 +104,28 @@ function saveStorage(){
 function updateWeather(){
   let menu = document.getElementById("menu")
   menu.innerHTML = ''
+
   let values = JSON.parse(localStorage.getItem('weather'))
 
   values.map((item) => {
   let ul = document.createElement("ul")
   let li = document.createElement("li")
   let span = document.createElement("span")
+  let img = document.createElement("img")
 
   span.textContent = `${item.city} ${item.desc} ${item.tempMax} ${item.tempMin}`;
-
+  img.innerHTML = `${item.imgContainer}`
+  span.appendChild(img)
   li.appendChild(span)
   ul.appendChild(li)
   menu.appendChild(ul)
 
+  img.src ="";
+
+  console.log(item.imgContainer)
   })
 }
+
 btn.addEventListener("click", () => {
   saveStorage()
   updateWeather()
