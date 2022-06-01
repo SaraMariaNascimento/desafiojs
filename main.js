@@ -80,28 +80,36 @@ const getUserGeo = () => {
 })()
 
 function saveStorage(){
+  const time = document.getElementById('data-hora').innerHTML;
+  const image = document.querySelector('.container-img img');
+  
   const dados = {
     city: city.innerHTML,
     temp: temp.innerHTML,
     desc: desc.innerHTML,
     tempMin: tempMin.innerHTML,
     tempMax: tempMax.innerHTML,
-    icon: imgContainer.innerHTML,
+    icon: image.getAttribute('src'),
+    time: time
   }
-  console.log( dados)
-  
-  if(localStorage.length === 0) {
+
+  const weather = localStorage.getItem('weather')
+
+  if (!weather) {
     let saveInfo =[]
     saveInfo.push(dados) 
     localStorage.setItem("weather", JSON.stringify(saveInfo))
-  }else{
+  } else {
     let information = JSON.parse(localStorage.getItem("weather"))
     information.push(dados) 
     localStorage.setItem("weather", JSON.stringify(information))
     console.log(information)
   }
 }
+
+
 function updateWeather(){
+
   let menu = document.getElementById("menu")
   menu.innerHTML = ''
 
@@ -113,16 +121,16 @@ function updateWeather(){
   let span = document.createElement("span")
   let img = document.createElement("img")
 
-  span.textContent = `${item.city} ${item.desc} ${item.tempMax} ${item.tempMin}`;
-  img.innerHTML = `${item.imgContainer}`
+  span.textContent = `${item.city} ${item.desc} ${item.tempMax} ${item.tempMin} ${item.time} `;
+  img.innerHTML = `${item.icon}`
   span.appendChild(img)
   li.appendChild(span)
   ul.appendChild(li)
   menu.appendChild(ul)
 
-  img.src ="";
+  img.src = ""
 
-  console.log(item.imgContainer)
+  console.log(item.icon)
   })
 }
 
