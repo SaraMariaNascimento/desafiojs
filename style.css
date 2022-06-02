@@ -11,13 +11,13 @@
   display: flex;
   justify-content: space-around;
   align-items: center;
-  height: 100px;
+  height: 101px;
   background-color: #1F618D;
   
 }
 .imgLogo{
   cursor: pointer;
-  width: 140px;
+  width: 100px;
 }
 #menu{
   display: block; 
@@ -112,11 +112,11 @@
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  padding: 8rem;
+  padding: 5rem;
 }
 .temp, .unit{
   font-size: 40px;
-  margin-top: 50px;
+
 }
 .citySection > h1, h2{
   margin: 15px;
@@ -143,7 +143,9 @@
   align-items: center;
   flex-direction: column;
 }
-
+.infoDescription{
+  margin: 2rem;
+}
 .information{
   background-color:  #a5a5f79c;
   width: 250px;
@@ -153,7 +155,8 @@
   font-size: 16px;
   border-radius: 5px;
   cursor: pointer;
-  margin:3rem;
+  margin: 3rem;
+
 }
 
 .information:hover{
