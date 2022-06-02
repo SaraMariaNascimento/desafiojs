@@ -172,3 +172,8 @@ footer{
   justify-content: space-between;
   padding: 5px;
 }
+@media(max-width:420px){
+  .citySection{
+    padding: 3rem;
+  }
+}
