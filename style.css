@@ -92,7 +92,18 @@
 }
 #menu ul li{
   padding: 15px;
+
 }
+
+#menu ul li img{
+  width: 50px;
+  
+}
+.max > img{
+  padding-top: 5px ;
+  
+}
+
 .citySection{
   display: flex;
   justify-content: center;
@@ -108,7 +119,13 @@
   text-align: center;
   margin: 0.5rem;
 }
-
+.max{
+  color: rgb(255, 0, 0);
+  
+}
+.min{
+  color: rgb(52, 52, 207);
+}
 .descripctionSection{
   display: flex;
   justify-content: center;

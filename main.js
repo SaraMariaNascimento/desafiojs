@@ -54,8 +54,6 @@ const getUserGeo = () => {
       dataGet.push(-42.9687)
     })
 
-
-  
   const lat = dataGet[0]
   const long = dataGet[1]
   const key = 'f3b143b438f4b745d5b9b967564e93bf'
@@ -70,12 +68,10 @@ const getUserGeo = () => {
   desc.innerHTML = result.weather[0].description.toUpperCase()
   let iconName = result.weather[0].icon;
   imgContainer.innerHTML = `<img src="./icons/${iconName}.png">`;
-  tempMin.innerHTML = result.main.temp_min + "°C"
   tempMax.innerHTML = result.main.temp_max + "°C"
+  tempMin.innerHTML = result.main.temp_min + "°C"
   
 
-  
-  
   console.log(result)
 })()
 
@@ -109,7 +105,6 @@ function saveStorage(){
 
 
 function updateWeather(){
-
   let menu = document.getElementById("menu")
   menu.innerHTML = ''
 
@@ -121,16 +116,13 @@ function updateWeather(){
   let span = document.createElement("span")
   let img = document.createElement("img")
 
-  span.textContent = `${item.city} ${item.desc} ${item.tempMax} ${item.tempMin} ${item.time} `;
-  img.innerHTML = `${item.icon}`
+  span.textContent = `${item.city}, ${item.desc}, ${item.tempMax},  ${item.tempMin},  ${item.time} `;
   span.appendChild(img)
   li.appendChild(span)
   ul.appendChild(li)
   menu.appendChild(ul)
 
-  img.src = ""
-
-  console.log(item.icon)
+  img.src = `${item.icon}`
   })
 }
 
