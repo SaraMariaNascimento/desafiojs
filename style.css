@@ -147,7 +147,7 @@
   margin: 2rem;
 }
 .information{
-  background-color:  #a5a5f79c;
+  background-color:  #a5a5f7e7;
   width: 250px;
   height: 30px;
   color: #fff;
@@ -175,5 +175,11 @@ footer{
 @media(max-width:420px){
   .citySection{
     padding: 3rem;
+  }
+  .infoDescription {
+    margin: 1rem;
+}
+  .information{
+    margin: 1rem;
   }
 }

@@ -67,7 +67,7 @@ const getUserGeo = () => {
   temp.innerHTML = result.main.temp + "°C"
   desc.innerHTML = result.weather[0].description.toUpperCase()
   let iconName = result.weather[0].icon;
-  imgContainer.innerHTML = `<img src="./icons/${iconName}.png">`;
+  imgContainer.innerHTML = `<img src="./icons/${iconName}.png" alt = "imagemClima">`;
   tempMax.innerHTML = result.main.temp_max + "°C"
   tempMin.innerHTML = result.main.temp_min + "°C"
   
