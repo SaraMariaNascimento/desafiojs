@@ -50,8 +50,8 @@ const getUserGeo = () => {
     })
     .catch(error => {
       alert("O navegador não suporta geolocalização 😢 ")
-      dataGet.push(-23.5489)
-      dataGet.push(-42.9687)
+      dataGet.push(-15.7801)
+      dataGet.push(-47.9292)
     })
 
   const lat = dataGet[0]
@@ -72,7 +72,6 @@ const getUserGeo = () => {
   tempMin.innerHTML = result.main.temp_min + "°C"
   
 
-  console.log(result)
 })()
 
 function saveStorage(){
@@ -105,6 +104,7 @@ function saveStorage(){
 
 
 function updateWeather(){
+
   let menu = document.getElementById("menu")
   menu.innerHTML = ''
 
@@ -123,6 +123,8 @@ function updateWeather(){
   menu.appendChild(ul)
 
   img.src = `${item.icon}`
+
+
   })
 }
 

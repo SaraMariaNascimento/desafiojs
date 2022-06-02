@@ -11,10 +11,13 @@
   display: flex;
   justify-content: space-around;
   align-items: center;
+  height: 100px;
   background-color: #1F618D;
+  
 }
 .imgLogo{
   cursor: pointer;
+  width: 140px;
 }
 #menu{
   display: block; 
@@ -67,7 +70,7 @@
 
 }
 
-#nav.active #hamburguer::after{ /*é o de baixo*/
+#nav.active #hamburguer::after{ 
   transform:rotate(135deg);
 }
 
@@ -111,20 +114,28 @@
   flex-direction: column;
   padding: 8rem;
 }
-
+.temp, .unit{
+  font-size: 40px;
+  margin-top: 50px;
+}
 .citySection > h1, h2{
   margin: 15px;
+  text-align: center;
 }
 .desc, .min, .max{
   text-align: center;
   margin: 0.5rem;
 }
 .max{
-  color: rgb(255, 0, 0);
+  background-color: rgba(255, 0, 0, 0.479);
+  border-radius: 4px;
+  font-weight: bold;
   
 }
 .min{
-  color: rgb(52, 52, 207);
+  background-color: rgba(52, 52, 207, 0.702);
+  font-weight: bold;
+  border-radius: 4px;
 }
 .descripctionSection{
   display: flex;
@@ -134,7 +145,7 @@
 }
 
 .information{
-  background-color:#9191e3e1;
+  background-color:  #a5a5f79c;
   width: 250px;
   height: 30px;
   color: #fff;
